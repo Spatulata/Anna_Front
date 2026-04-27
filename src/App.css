@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
+:root[data-theme='dark'] {
+  --app-bg: #0a0e1a;
+  --surface: #1e2832;
+  --surface-2: #252f3a;
+  --surface-border: rgba(60, 75, 90, 0.4);
+  --text-primary: #ecf0f1;
+  --text-secondary: #95a5a6;
+  --text-muted: #7f8c8d;
+  --accent: #3498db;
+  --row-hover: #252f3a;
+  --input-bg: #252f3a;
+}
+
+:root[data-theme='light'] {
+  --app-bg: #f4f7fb;
+  --surface: #ffffff;
+  --surface-2: #f8fbff;
+  --surface-border: #dbe3ef;
+  --text-primary: #1f2d3d;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --accent: #1d79d8;
+  --row-hover: #f3f8ff;
+  --input-bg: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--app-bg);
+  color: var(--text-primary);
+}
+
+code {
+  font-family: 'Courier New', monospace;
+}

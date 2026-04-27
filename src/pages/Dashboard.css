@@ -1,0 +1,919 @@
+.dashboard {
+  width: 100%;
+  height: 100%;
+  max-height: calc(100vh - 4rem);
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  padding: 0;
+}
+
+.dashboard-loading {
+  text-align: center;
+  padding: 3rem;
+  color: #95a5a6;
+  font-size: 1.1rem;
+}
+
+/* Верхняя панель */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(60, 75, 90, 0.4);
+  flex-shrink: 0;
+}
+
+.header-left {
+  flex: 1;
+}
+
+.greeting {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ecf0f1;
+  margin: 0 0 0.25rem 0;
+}
+
+.header-subtitle {
+  color: #95a5a6;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.date-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #1e2832;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(60, 75, 90, 0.4);
+}
+
+.date-day {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #3498db;
+  line-height: 1;
+}
+
+.date-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.date-month {
+  font-size: 0.85rem;
+  color: #ecf0f1;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.date-weekday {
+  font-size: 0.75rem;
+  color: #95a5a6;
+  text-transform: capitalize;
+}
+
+
+/* Карточки статистики */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+  align-items: stretch;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, var(--card-bg-start) 0%, var(--card-bg-end) 100%);
+  border-radius: 12px;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  min-height: 120px;
+  height: 100%;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.stat-card-purple {
+  --card-bg-start: #9b59b6;
+  --card-bg-end: #8e44ad;
+}
+
+.stat-card-pink {
+  --card-bg-start: #e91e63;
+  --card-bg-end: #c2185b;
+}
+
+.stat-card-blue {
+  --card-bg-start: #3498db;
+  --card-bg-end: #2980b9;
+}
+
+.stat-card-yellow {
+  --card-bg-start: #f39c12;
+  --card-bg-end: #e67e22;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.2rem;
+}
+
+.stat-arrow {
+  font-size: 1.25rem;
+  opacity: 0.8;
+}
+
+.stat-sublabel {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Новый макет основного контента */
+.dashboard-content-new {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  flex: 1;
+  min-height: 0;
+  max-height: 100%;
+  overflow: visible;
+  width: 100%;
+}
+
+.dashboard-left-new {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+  min-height: 0;
+  overflow: visible;
+  min-width: 0;
+  align-items: stretch;
+}
+
+.dashboard-right-new {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+  min-height: 0;
+  overflow: visible;
+  min-width: 0;
+  align-items: stretch;
+}
+
+.dashboard-card {
+  background-color: #1e2832;
+  border-radius: 12px;
+  padding: 1.25rem;
+  border: 1px solid rgba(60, 75, 90, 0.4);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+}
+
+.chart-card {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.grades-card {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.events-card {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.schedule-card {
+  flex: 1;
+  min-height: 0;
+  max-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.subject-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ecf0f1;
+  margin: 0;
+}
+
+.dashboard-card h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ecf0f1;
+  margin: 0 0 1rem 0;
+}
+
+.subject-filter {
+  padding: 0.5rem 1rem;
+  padding-right: 2rem;
+  background-color: #252f3a;
+  border: 1px solid rgba(52, 152, 219, 0.3);
+  border-radius: 8px;
+  color: #ecf0f1;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%233498db' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 12px;
+}
+
+.subject-filter:hover {
+  background-color: #2a3540;
+  border-color: rgba(52, 152, 219, 0.5);
+}
+
+.subject-filter:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.subject-filter option {
+  background-color: #252f3a;
+  color: #ecf0f1;
+  padding: 0.5rem;
+}
+
+/* Домашнее задание */
+.homework-section {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background-color: #252f3a;
+  border-radius: 8px;
+}
+
+.homework-label {
+  font-size: 0.85rem;
+  color: #95a5a6;
+  margin-bottom: 0.25rem;
+}
+
+.homework-text {
+  font-size: 0.9rem;
+  color: #ecf0f1;
+}
+
+/* Навигация по периодам */
+.period-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.period-tab {
+  padding: 0.5rem 1rem;
+  background-color: #252f3a;
+  border: 1px solid rgba(60, 75, 90, 0.4);
+  border-radius: 6px;
+  color: #bdc3c7;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.period-tab:hover {
+  background-color: #2a3540;
+  color: #ecf0f1;
+}
+
+.period-tab.active {
+  background-color: #3498db;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+}
+
+/* Контент рейтинга */
+.rating-content {
+  display: flex;
+  flex-direction: row;
+  gap: 1.2rem;
+  padding-top: 0.5rem;
+  align-items: flex-start;
+  width: 100%;
+  min-width: 0;
+  overflow: visible;
+}
+
+.chart-section-left {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  flex-shrink: 0;
+  min-width: 300px;
+}
+
+.chart-section-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  min-height: 300px;
+  width: 100%;
+  overflow: visible;
+}
+
+.chart-section-right .line-chart {
+  flex: 1;
+  height: auto;
+  min-height: 250px;
+  max-height: 350px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.chart-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.doughnut-chart {
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.doughnut-chart svg {
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+}
+
+.chart-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-width: 60px;
+}
+
+.average-score-compact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.6rem 0.9rem;
+  background: rgba(52, 152, 219, 0.1);
+  border-radius: 8px;
+  border-left: 3px solid #3498db;
+  min-width: 110px;
+}
+
+.average-score-label-compact {
+  font-size: 0.75rem;
+  color: #95a5a6;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.average-score-value-compact {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #3498db;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: #ecf0f1;
+  font-weight: 500;
+}
+
+.legend-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.legend-green {
+  background-color: #27ae60;
+}
+
+.legend-yellow {
+  background-color: #f39c12;
+}
+
+.legend-orange {
+  background-color: #e67e22;
+}
+
+.legend-red {
+  background-color: #e74c3c;
+}
+
+/* Старые стили для average-score-circle удалены - заменены на compact версию */
+
+/* Линейный график */
+.line-chart {
+  width: 100%;
+  background-color: #252f3a;
+  border-radius: 10px;
+  padding: 0.5rem;
+  border: 1px solid rgba(60, 75, 90, 0.3);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.line-chart svg {
+  display: block;
+  min-width: 200px;
+}
+
+.line-chart::-webkit-scrollbar {
+  height: 6px;
+}
+
+.line-chart::-webkit-scrollbar-track {
+  background: #1e2832;
+  border-radius: 3px;
+}
+
+.line-chart::-webkit-scrollbar-thumb {
+  background: #3498db;
+  border-radius: 3px;
+}
+
+.line-chart::-webkit-scrollbar-thumb:hover {
+  background: #2980b9;
+}
+
+.grade-point {
+  cursor: pointer;
+  transition: r 0.15s ease;
+}
+
+.grade-point:hover {
+  r: 7;
+}
+
+.chart-info {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  width: 100%;
+}
+
+.chart-value {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #3498db;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+  display: block;
+}
+
+.chart-label {
+  font-size: 0.85rem;
+  color: #95a5a6;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.chart-no-data {
+  color: #7f8c8d;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+/* Таблица оценок */
+.grades-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.grades-table::-webkit-scrollbar {
+  width: 6px;
+}
+
+.grades-table::-webkit-scrollbar-track {
+  background: #1e2832;
+  border-radius: 3px;
+}
+
+.grades-table::-webkit-scrollbar-thumb {
+  background: #3498db;
+  border-radius: 3px;
+}
+
+.grades-table::-webkit-scrollbar-thumb:hover {
+  background: #2980b9;
+}
+
+.grade-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.75rem;
+  background-color: #252f3a;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.grade-row:hover {
+  background-color: #2a3540;
+}
+
+.grade-subject {
+  color: #ecf0f1;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.grade-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  min-width: 36px;
+  text-align: center;
+}
+
+.grade-value.grade-5 {
+  background-color: #27ae60;
+  color: white;
+}
+
+.grade-value.grade-4 {
+  background-color: #f39c12;
+  color: white;
+}
+
+.grade-value.grade-3 {
+  background-color: #e67e22;
+  color: white;
+}
+
+.grade-value.grade-2,
+.grade-value.grade-1 {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.grade-date {
+  color: #95a5a6;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+/* События */
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.event-item {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background-color: #252f3a;
+  border-radius: 8px;
+  border-left: 3px solid #3498db;
+  transition: all 0.2s;
+}
+
+.event-item:hover {
+  background-color: #2a3540;
+}
+
+.event-item.soon {
+  border-left-color: #e74c3c;
+}
+
+.event-date {
+  font-size: 0.8rem;
+  color: #95a5a6;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.event-content {
+  flex: 1;
+}
+
+.event-title {
+  color: #ecf0f1;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+  font-size: 0.9rem;
+}
+
+.event-subtitle {
+  font-size: 0.8rem;
+  color: #95a5a6;
+}
+
+/* Расписание на неделю - таблица */
+.week-schedule-table-wrapper {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+  max-height: 100%;
+  height: 100%;
+}
+
+.week-schedule-table-wrapper::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.week-schedule-table-wrapper::-webkit-scrollbar-track {
+  background: #1e2832;
+  border-radius: 3px;
+}
+
+.week-schedule-table-wrapper::-webkit-scrollbar-thumb {
+  background: #3498db;
+  border-radius: 3px;
+}
+
+.week-schedule-table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #2980b9;
+}
+
+.week-schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.schedule-th {
+  padding: 0.6rem;
+  text-align: center;
+  color: #3498db;
+  font-weight: 600;
+  font-size: 0.8rem;
+  border-bottom: 2px solid rgba(60, 75, 90, 0.4);
+  background-color: #252f3a;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.schedule-lesson-th {
+  width: 50px;
+  min-width: 50px;
+  background-color: #1e2832;
+  border-right: 2px solid rgba(60, 75, 90, 0.4);
+}
+
+.schedule-td {
+  padding: 0.5rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(60, 75, 90, 0.2);
+  vertical-align: middle;
+}
+
+.schedule-lesson-num-cell {
+  width: 50px;
+  min-width: 50px;
+  background-color: #1e2832;
+  border-right: 2px solid rgba(60, 75, 90, 0.4);
+  color: #3498db;
+  font-weight: 600;
+  font-size: 0.9rem;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+
+.schedule-lesson {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background-color: #252f3a;
+  border-radius: 6px;
+  min-height: 40px;
+}
+
+.schedule-lesson.empty {
+  background-color: transparent;
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+.schedule-lesson-name {
+  font-size: 0.8rem;
+  color: #bdc3c7;
+  font-weight: 500;
+  word-break: break-word;
+  text-align: center;
+}
+
+.empty-state {
+  text-align: center;
+  color: #7f8c8d;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+  .dashboard-content-new {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .chart-section {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .header-right {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .stat-value {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+}
+
+/* Light theme overrides for dashboard */
+:root[data-theme='light'] .dashboard-header {
+  border-bottom-color: var(--surface-border);
+}
+
+:root[data-theme='light'] .greeting {
+  color: var(--text-primary);
+}
+
+:root[data-theme='light'] .header-subtitle,
+:root[data-theme='light'] .date-weekday,
+:root[data-theme='light'] .chart-label,
+:root[data-theme='light'] .grade-date,
+:root[data-theme='light'] .event-date,
+:root[data-theme='light'] .event-subtitle,
+:root[data-theme='light'] .empty-state {
+  color: var(--text-secondary);
+}
+
+:root[data-theme='light'] .date-info,
+:root[data-theme='light'] .dashboard-card,
+:root[data-theme='light'] .line-chart,
+:root[data-theme='light'] .grade-row,
+:root[data-theme='light'] .event-item,
+:root[data-theme='light'] .homework-section,
+:root[data-theme='light'] .schedule-th,
+:root[data-theme='light'] .schedule-lesson-num-cell,
+:root[data-theme='light'] .schedule-lesson {
+  background-color: var(--surface);
+  border-color: var(--surface-border);
+}
+
+:root[data-theme='light'] .date-month,
+:root[data-theme='light'] .subject-title,
+:root[data-theme='light'] .dashboard-card h2,
+:root[data-theme='light'] .legend-item,
+:root[data-theme='light'] .grade-subject,
+:root[data-theme='light'] .event-title,
+:root[data-theme='light'] .schedule-lesson-name {
+  color: var(--text-primary);
+}
+
+:root[data-theme='light'] .subject-filter,
+:root[data-theme='light'] .period-tab {
+  background-color: var(--surface-2);
+  color: var(--text-primary);
+  border: 1px solid var(--surface-border);
+}
+
+:root[data-theme='light'] .subject-filter:hover,
+:root[data-theme='light'] .period-tab:hover,
+:root[data-theme='light'] .grade-row:hover,
+:root[data-theme='light'] .event-item:hover {
+  background-color: var(--row-hover);
+}
+
+:root[data-theme='light'] .subject-filter option {
+  background-color: var(--surface);
+  color: var(--text-primary);
+}
+
+:root[data-theme='light'] .line-chart::-webkit-scrollbar-track,
+:root[data-theme='light'] .grades-table::-webkit-scrollbar-track,
+:root[data-theme='light'] .week-schedule-table-wrapper::-webkit-scrollbar-track {
+  background: var(--surface-2);
+}
+
+:root[data-theme='light'] .schedule-th {
+  border-bottom-color: var(--surface-border);
+}
+
+:root[data-theme='light'] .schedule-lesson-th,
+:root[data-theme='light'] .schedule-lesson-num-cell {
+  border-right-color: var(--surface-border);
+}
+
+:root[data-theme='light'] .schedule-td {
+  border-bottom-color: var(--surface-border);
+}

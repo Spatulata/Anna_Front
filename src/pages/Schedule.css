@@ -1,0 +1,239 @@
+.schedule-page {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.schedule-page h1 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 0.5rem;
+  flex-shrink: 0;
+}
+
+.schedule-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.schedule-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+  min-height: 0;
+}
+
+.schedule-section-title {
+  color: #3498db;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid rgba(52, 152, 219, 0.3);
+}
+
+.schedule-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  background-color: var(--surface);
+  border-radius: 12px;
+  border: 1px solid var(--surface-border);
+  padding: 0.75rem;
+  flex: 1;
+  min-height: 0;
+}
+
+.schedule-wrapper::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.schedule-wrapper::-webkit-scrollbar-track {
+  background: var(--surface);
+  border-radius: 4px;
+}
+
+.schedule-wrapper::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+.schedule-wrapper::-webkit-scrollbar-thumb:hover {
+  filter: brightness(0.9);
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  min-width: 1200px;
+}
+
+.schedule-th {
+  padding: 0.5rem 0.4rem;
+  text-align: center;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.75rem;
+  border-bottom: 2px solid var(--surface-border);
+  background-color: var(--surface-2);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  min-width: 80px;
+}
+
+.schedule-th-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.schedule-th-day {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.schedule-th-date {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.schedule-lesson-th {
+  width: 60px;
+  min-width: 60px;
+  background-color: var(--surface-2);
+  border-right: 2px solid var(--surface-border);
+  position: sticky;
+  left: 0;
+  z-index: 3;
+}
+
+.schedule-td {
+  padding: 0.4rem 0.3rem;
+  text-align: center;
+  border-bottom: 1px solid var(--surface-border);
+  vertical-align: middle;
+  min-width: 80px;
+}
+
+.schedule-lesson-num-cell {
+  width: 60px;
+  min-width: 60px;
+  background-color: var(--surface-2);
+  border-right: 2px solid var(--surface-border);
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+
+.schedule-lesson {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.3rem;
+  background-color: var(--surface-2);
+  border-radius: 6px;
+  min-height: 45px;
+  gap: 0.2rem;
+}
+
+.schedule-lesson.empty {
+  background-color: transparent;
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+.schedule-lesson-name {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  word-break: break-word;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.schedule-lesson-room {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.schedule-loading {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  background: var(--surface);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border-top: 4px solid var(--surface-border);
+}
+
+@media (max-width: 1200px) {
+  .schedule-wrapper {
+    padding: 0.5rem;
+  }
+  
+  .schedule-table {
+    min-width: 1000px;
+  }
+}
+
+@media (max-width: 768px) {
+  .schedule-page h1 {
+    font-size: 1.5rem;
+  }
+  
+  .schedule-table {
+    min-width: 800px;
+    font-size: 0.75rem;
+  }
+  
+  .schedule-th {
+    padding: 0.5rem 0.25rem;
+    font-size: 0.7rem;
+  }
+  
+  .schedule-th-day {
+    font-size: 0.75rem;
+  }
+  
+  .schedule-th-date {
+    font-size: 0.65rem;
+  }
+  
+  .schedule-lesson-name {
+    font-size: 0.7rem;
+  }
+  
+  .schedule-lesson-room {
+    font-size: 0.65rem;
+  }
+}

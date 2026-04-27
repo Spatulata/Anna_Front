@@ -1,0 +1,519 @@
+.teacher-dashboard {
+  width: 100%;
+  height: 100%;
+  max-height: calc(100vh - 4rem);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+}
+
+.teacher-loading {
+  text-align: center;
+  padding: 3rem;
+  color: #95a5a6;
+  font-size: 1.1rem;
+}
+
+.teacher-header {
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.teacher-header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ecf0f1;
+  margin: 0 0 0.25rem 0;
+}
+
+.teacher-subtitle {
+  color: #95a5a6;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Табы */
+.teacher-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.teacher-tab {
+  padding: 0.6rem 1.2rem;
+  background-color: #252f3a;
+  border: 1px solid rgba(60, 75, 90, 0.4);
+  border-radius: 8px;
+  color: #bdc3c7;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.teacher-tab:hover {
+  background-color: #2a3540;
+  color: #ecf0f1;
+}
+
+.teacher-tab.active {
+  background-color: #3498db;
+  color: white;
+  font-weight: 600;
+  border-color: #3498db;
+}
+
+/* Расписание */
+.teacher-schedule {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.75rem;
+}
+
+.schedule-day-card {
+  background-color: #1e2832;
+  border-radius: 10px;
+  border: 1px solid rgba(60, 75, 90, 0.4);
+  overflow: hidden;
+}
+
+.day-header {
+  background-color: #252f3a;
+  padding: 0.75rem;
+  text-align: center;
+  font-weight: 600;
+  color: #3498db;
+  font-size: 0.9rem;
+}
+
+.lesson-card {
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(60, 75, 90, 0.2);
+}
+
+.lesson-card:last-child {
+  border-bottom: none;
+}
+
+.lesson-number {
+  font-size: 0.75rem;
+  color: #7f8c8d;
+  margin-bottom: 0.25rem;
+}
+
+.lesson-subject {
+  font-size: 0.9rem;
+  color: #ecf0f1;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.lesson-class {
+  font-size: 0.8rem;
+  color: #3498db;
+}
+
+.lesson-room {
+  font-size: 0.75rem;
+  color: #95a5a6;
+  margin-top: 0.25rem;
+}
+
+.no-lessons {
+  padding: 1.5rem;
+  text-align: center;
+  color: #7f8c8d;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+/* Журнал оценок */
+.teacher-grades {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.grades-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.filter-group label {
+  font-size: 0.8rem;
+  color: #95a5a6;
+  font-weight: 500;
+}
+
+.filter-group select {
+  padding: 0.5rem 2rem 0.5rem 0.8rem;
+  background-color: #252f3a;
+  border: 1px solid rgba(60, 75, 90, 0.4);
+  border-radius: 8px;
+  color: #ecf0f1;
+  font-size: 0.9rem;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%233498db' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 12px;
+  min-width: 180px;
+}
+
+.filter-group select:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+/* Форма добавления оценки */
+.add-grade-form {
+  background-color: #1e2832;
+  border-radius: 10px;
+  padding: 1rem;
+  border: 1px solid rgba(60, 75, 90, 0.4);
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.add-grade-form h3 {
+  font-size: 1rem;
+  color: #ecf0f1;
+  margin: 0 0 0.75rem 0;
+}
+
+.form-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.form-row select,
+.form-row input {
+  padding: 0.5rem 0.8rem;
+  background-color: #252f3a;
+  border: 1px solid rgba(60, 75, 90, 0.4);
+  border-radius: 8px;
+  color: #ecf0f1;
+  font-size: 0.85rem;
+}
+
+.form-row select:focus,
+.form-row input:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.form-row select {
+  flex: 1.5;
+  min-width: 150px;
+}
+
+.form-row input[type="number"] {
+  width: 70px;
+}
+
+.form-row input[type="date"] {
+  width: 140px;
+}
+
+.form-row input[type="text"] {
+  flex: 1;
+  min-width: 120px;
+}
+
+.btn-add-grade {
+  padding: 0.5rem 1.2rem;
+  background-color: #27ae60;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-add-grade:hover {
+  background-color: #219a52;
+}
+
+/* Таблица оценок */
+.grades-table-wrapper {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+  border-radius: 10px;
+  border: 1px solid rgba(60, 75, 90, 0.4);
+}
+
+.journal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background-color: #1e2832;
+  border-bottom: 1px solid rgba(60, 75, 90, 0.4);
+}
+
+.journal-header h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #ecf0f1;
+}
+
+.journal-meta {
+  color: #95a5a6;
+  font-size: 0.8rem;
+}
+
+.teacher-grades-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.teacher-grades-table th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  color: #3498db;
+  font-weight: 600;
+  font-size: 0.8rem;
+  border-bottom: 2px solid rgba(60, 75, 90, 0.4);
+  background-color: #252f3a;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.teacher-grades-table td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid rgba(60, 75, 90, 0.2);
+  vertical-align: middle;
+}
+
+.teacher-grades-table tbody tr {
+  background-color: #1e2832;
+  transition: background-color 0.15s;
+}
+
+.teacher-grades-table tbody tr:hover {
+  background-color: #252f3a;
+}
+
+.grade-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: white;
+  margin-right: 0.5rem;
+}
+
+.grade-badge.grade-5 { background-color: #27ae60; }
+.grade-badge.grade-4 { background-color: #f39c12; }
+.grade-badge.grade-3 { background-color: #e67e22; }
+.grade-badge.grade-2,
+.grade-badge.grade-1 { background-color: #e74c3c; }
+
+.grade-badges-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.more-grades-badge {
+  display: inline-block;
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  background-color: rgba(52, 152, 219, 0.2);
+  color: #3498db;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.no-grades-inline {
+  color: #95a5a6;
+  font-size: 0.85rem;
+}
+
+.row-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.inline-grade-input {
+  width: 70px;
+  padding: 0.2rem 0.4rem;
+  background-color: #252f3a;
+  border: 1px solid rgba(60, 75, 90, 0.4);
+  border-radius: 4px;
+  color: #ecf0f1;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.inline-grade-input:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.btn-delete-grade {
+  padding: 0.3rem 0.5rem;
+  background-color: rgba(231, 76, 60, 0.2);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.15s;
+}
+
+.btn-delete-grade:hover {
+  background-color: rgba(231, 76, 60, 0.4);
+}
+
+/* ДЗ заглушка */
+.teacher-homework {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-state {
+  text-align: center;
+  color: #7f8c8d;
+  padding: 2rem;
+}
+
+.empty-state p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.empty-subtitle {
+  font-size: 0.9rem !important;
+  color: #607d8b;
+}
+
+/* Скроллбар */
+.teacher-schedule::-webkit-scrollbar,
+.grades-table-wrapper::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.teacher-schedule::-webkit-scrollbar-track,
+.grades-table-wrapper::-webkit-scrollbar-track {
+  background: #1e2832;
+}
+
+.teacher-schedule::-webkit-scrollbar-thumb,
+.grades-table-wrapper::-webkit-scrollbar-thumb {
+  background: #3498db;
+  border-radius: 4px;
+}
+
+.teacher-schedule::-webkit-scrollbar-thumb:hover,
+.grades-table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #2980b9;
+}
+
+/* Light theme overrides */
+:root[data-theme='light'] .teacher-loading,
+:root[data-theme='light'] .teacher-subtitle,
+:root[data-theme='light'] .filter-group label,
+:root[data-theme='light'] .journal-meta,
+:root[data-theme='light'] .lesson-room,
+:root[data-theme='light'] .no-grades-inline,
+:root[data-theme='light'] .empty-state,
+:root[data-theme='light'] .empty-subtitle {
+  color: var(--text-secondary);
+}
+
+:root[data-theme='light'] .teacher-header h1,
+:root[data-theme='light'] .lesson-subject,
+:root[data-theme='light'] .add-grade-form h3,
+:root[data-theme='light'] .journal-header h3 {
+  color: var(--text-primary);
+}
+
+:root[data-theme='light'] .teacher-tab,
+:root[data-theme='light'] .filter-group select,
+:root[data-theme='light'] .add-grade-form,
+:root[data-theme='light'] .grades-table-wrapper,
+:root[data-theme='light'] .journal-header,
+:root[data-theme='light'] .teacher-grades-table thead th,
+:root[data-theme='light'] .teacher-grades-table tbody tr,
+:root[data-theme='light'] .schedule-day-card,
+:root[data-theme='light'] .day-header,
+:root[data-theme='light'] .form-row select,
+:root[data-theme='light'] .form-row input,
+:root[data-theme='light'] .inline-grade-input {
+  background-color: var(--surface);
+  border-color: var(--surface-border);
+  color: var(--text-primary);
+}
+
+:root[data-theme='light'] .teacher-tab:hover,
+:root[data-theme='light'] .teacher-grades-table tbody tr:hover {
+  background-color: var(--row-hover);
+}
+
+:root[data-theme='light'] .teacher-schedule::-webkit-scrollbar-track,
+:root[data-theme='light'] .grades-table-wrapper::-webkit-scrollbar-track {
+  background: var(--surface-2);
+}
+
+@media (max-width: 1200px) {
+  .schedule-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .schedule-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .teacher-tabs {
+    flex-wrap: wrap;
+  }
+
+  .grades-filters {
+    flex-direction: column;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-row select,
+  .form-row input {
+    width: 100% !important;
+  }
+}
